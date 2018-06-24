@@ -15,7 +15,6 @@ https://www.cnblogs.com/PyLearn/archive/2017/11/06/7795552.html
 
 class Solution:
     def movingCount(self,threshold,rows,cols):
-        import numpy as np
         if threshold < 0 or rows<= 0 or cols <= 0:
             return 0
         visited = [[0 for i in range(rows)]for j in range(cols)]
