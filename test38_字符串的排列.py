@@ -41,7 +41,33 @@ def Combination_(lis,vec,m):
         vec.pop()
         Combination_(lis[1:],vec,m)
 
+# n个皇后问题
+def queens(n):
+    lis = [x for x in range(n)]
+    Permutation_n(lis,0)
 
-lis = list('abc')
+def Permutation_n(lis,n):
+    if n >= len(lis):
+        if SatisfyQueenRequirements(lis):
+            print(' '.join(map(str,lis)))
+        return
+    for i in range(n,len(lis)):
+        lis[i],lis[n] = lis[n],lis[i]
+        Permutation_n(lis,n+1)
+        lis[i],lis[n] = lis[n],lis[i]
+
+def SatisfyQueenRequirements(lis):
+    Flag = True
+    for i in range(0,len(lis)-1):
+        for j in range(i+1,len(lis)):
+            if abs(i - j) == abs(lis[i] - lis[j]):
+                Flag = False
+                break
+        if not Flag:
+            break
+    return Flag
+
+# lis = list('abc')
 # Permutation(lis)
-Combination(lis)
+# Combination(lis)
+queens(8)
