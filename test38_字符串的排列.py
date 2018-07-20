@@ -4,6 +4,10 @@
 固定第i个数组，然后处理后面n-i个数组
 这里需要交换2个位置，但最后会交换回来。
 https://blog.csdn.net/summerxiachen/article/details/60579623
+
+扩展提是全组合算法
+这里需要用到一个缓存list
+首先将元素压入vec，然后处理lis[1:]后面的元素
 '''
 
 def Permutation(lis):
@@ -20,5 +24,24 @@ def Permutation_(lis,n):
         Permutation_(lis,n+1)# 注意，这里是n+1
         lis[i], lis[n] = lis[n], lis[i]  # 交换回来
 
+def Combination(lis):
+    if not isinstance(lis,list):
+        return
+    vec = []
+    for i in range(1,len(lis)+1):
+        Combination_(lis,vec,i)
+
+def Combination_(lis,vec,m):
+    if m == len(vec):
+        print(' '.join(vec))
+        return
+    if lis:
+        vec.append(lis[0])
+        Combination_(lis[1:],vec,m)
+        vec.pop()
+        Combination_(lis[1:],vec,m)
+
+
 lis = list('abc')
-Permutation(lis)
+# Permutation(lis)
+Combination(lis)
