@@ -3,6 +3,7 @@
 全排列算法，很常见，利用递归
 固定第i个数组，然后处理后面n-i个数组
 这里需要交换2个位置，但最后会交换回来。
+https://blog.csdn.net/summerxiachen/article/details/60579623
 '''
 
 def Permutation(lis):
