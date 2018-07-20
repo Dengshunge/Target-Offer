@@ -22,10 +22,19 @@ def Permutation_(lis,n):
         print(' '.join(lis))
         return
     for i in range(n,len(lis)):
-        lis[i], lis[n] = lis[n], lis[i]  # 交换两个位置
-        Permutation_(lis,n+1)# 注意，这里是n+1
-        lis[i], lis[n] = lis[n], lis[i]  # 交换回来
+        if check(lis,n,i):
+            lis[i], lis[n] = lis[n], lis[i]  # 交换两个位置
+            Permutation_(lis,n+1)# 注意，这里是n+1
+            lis[i], lis[n] = lis[n], lis[i]  # 交换回来
 
+def check(lis,n,i):
+    if i > n:# 不用等号是允许自身与自身交换
+        # 当不是与自身交换的时候，判断是否会有重复
+        for j in range(n,i):
+            if lis[j] == lis[i]:
+                return False
+    return True
+               
 def Combination(lis):
     if not isinstance(lis,list):
         return
