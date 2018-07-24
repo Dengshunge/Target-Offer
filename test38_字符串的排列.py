@@ -28,6 +28,8 @@ def Permutation_(lis,n):
             lis[i], lis[n] = lis[n], lis[i]  # 交换回来
 
 def check(lis,n,i):
+    # n,i是指这两个元素需要交换
+    # 当lis[n]==lis[i]说明两个元素相同，不需要交换，不然会有重复
     if i > n:# 不用等号是允许自身与自身交换
         # 当不是与自身交换的时候，判断是否会有重复
         for j in range(n,i):
