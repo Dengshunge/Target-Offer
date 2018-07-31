@@ -1,4 +1,7 @@
 # 面试题60 n个骰子的点数
+'''
+考察了数学建模的的能力，这种题很常见，但我自己的建模能力有点差。
+'''
 
 class Solution:
     '''
@@ -43,13 +46,16 @@ class Solution2:
         for i in range(1, self.g_maxValue + 1):
             pProbabilities[flag][i] = 1
 
+        # 这里k表示第几个骰子
         for k in range(2, number + 1):
             for i in range(k):
                 pProbabilities[1 - flag][i] = 0
-            for i in range(k,self.g_maxValue*k+1):
+            # self.g_maxValue*k表示k个骰子最大点数之和。这里i表示点数之和
+            for i in range(k, self.g_maxValue * k + 1):
                 pProbabilities[1 - flag][i] = 0
                 j = 1
                 while j <= i and j <= self.g_maxValue:
+                    # 一个数组的第n项等于另一个数组的第n-1，n-2，n-3，n-4，n-5，n-6项之和
                     pProbabilities[1 - flag][i] += pProbabilities[flag][i - j]
                     j += 1
             flag = 1-flag
@@ -58,8 +64,6 @@ class Solution2:
         for i in range(number,self.g_maxValue*number+1):
             ratio = pProbabilities[flag][i]/total
             print('%d %.2f' % (i, ratio))
-
-
 
 # a = Solution()
 # a.PrintProbability(2)
