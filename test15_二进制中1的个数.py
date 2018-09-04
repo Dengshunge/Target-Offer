@@ -23,8 +23,7 @@ def NumberOf1_1(num):
 def NumberOf1_2(num):
     count = 0
     if num < 0:
-        num *= -1
-        count = 1
+        num = num&0xffffffff
     while num:
         count += 1
         num = (num-1) & num
